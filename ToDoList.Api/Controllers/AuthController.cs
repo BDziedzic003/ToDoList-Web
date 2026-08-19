@@ -20,6 +20,9 @@ namespace ToDoList.Api.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterRequest request)
         {
+            if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+                return BadRequest("Username and password are required");
+
             var user = userRepository.Register(request.Username, request.Password);
 
             if (user == null)
