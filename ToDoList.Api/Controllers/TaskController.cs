@@ -10,11 +10,11 @@ namespace ToDoList.Api.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
-    public class TasksController : ControllerBase
+    public class TaskController : ControllerBase
     {
         private readonly TaskRepository taskRepository;
 
-        public TasksController(TaskRepository taskRepository)
+        public TaskController(TaskRepository taskRepository)
         {
             this.taskRepository = taskRepository;
         }
