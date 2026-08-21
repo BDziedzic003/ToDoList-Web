@@ -79,7 +79,7 @@ namespace ToDoList.Api.Tests
             Assert.Equal(HttpStatusCode.OK, deleteResult.StatusCode);
         }
         [Fact]
-        public async Task RemoveTask_ReturnsNotFound_WhenTaskBelongsToAnotherUser()
+        public async Task Remove_ReturnsNotFound_WhenTaskBelongsToAnotherUser()
         {
             var token = await RegisterAndLoginAsync(UniqueUsername(), "testpass");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
