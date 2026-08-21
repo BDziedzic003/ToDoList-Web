@@ -23,36 +23,40 @@ namespace ToDoList.Repositories
             db.SaveChanges();
             return task.Id;
         }
-        public void Remove(int id, int userId)
+        public bool Remove(int id, int userId)
         {
             TaskItem task = db.Tasks.FirstOrDefault(t => t.Id == id && t.UserId == userId);
-            if (task == null) return;
+            if (task == null) return false;
             db.Tasks.Remove(task);
             db.SaveChanges();
+            return true;
         }
 
-        public void UpdateText(int id, string text, int userId) 
+        public bool UpdateText(int id, string text, int userId) 
         {
             TaskItem task = db.Tasks.FirstOrDefault(t => t.Id == id && t.UserId == userId);
-            if (task == null) return;
+            if (task == null) return false;
             task.Text = text;
             db.SaveChanges();
+            return true;
         }
 
-        public void UpdatePriority(int id, Priority priority, int userId)
+        public bool UpdatePriority(int id, Priority priority, int userId)
         {
             TaskItem task = db.Tasks.FirstOrDefault(t => t.Id == id && t.UserId == userId);
-            if (task == null) return;
+            if (task == null) return false;
             task.Priority = priority;
             db.SaveChanges();
+            return true;
         }
 
-        public void UpdateDone(int id, bool done, int userId)
+        public bool UpdateDone(int id, bool done, int userId)
         {
             TaskItem task = db.Tasks.FirstOrDefault(t => t.Id == id && t.UserId == userId);
-            if (task == null) return;
+            if (task == null) return false;
             task.Done = done;
             db.SaveChanges();
+            return true;
         }
 
         public List<TaskItem> FindTasksByKeyword(string keyword, int userId)
