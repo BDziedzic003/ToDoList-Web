@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using ToDoList.Models;
 
 namespace ToDoList.Data
 {
     public class TodoContext : DbContext
     {
-        private string connectionString = "Server=localhost;Database=ToDoList;Trusted_Connection=True;TrustServerCertificate=True;";
+        private string connectionString = "Host=localhost;Port=5432;Database=ToDoList;Username=postgres;Password=haslo;";
         public TodoContext() { }
         public TodoContext(string connectionString)
         {
@@ -21,7 +19,7 @@ namespace ToDoList.Data
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer(connectionString);
+                options.UseNpgsql(connectionString);
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
