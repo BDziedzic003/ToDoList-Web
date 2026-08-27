@@ -83,7 +83,7 @@ namespace ToDoList.Api.Controllers
             bool successful = taskRepository.UpdateDone(id, request.Done.Value, GetCurrentUserId());
             if (!successful)
                 return NotFound("Task not found");
-            return Ok("Task text updated");
+            return Ok("Task status updated");
         }
 
         public class TaskRequest
