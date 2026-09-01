@@ -30,7 +30,7 @@ jobs:
         env:
           Jwt__Key: "testkeytestkeytestkeytestkeytestkeytestkeytestkey"
           Jwt__Issuer: "ToDoListApi"
-          Jwt_Audience: "ToDoListApiUsers"
+          Jwt__Audience: "ToDoListApiUsers"
 
   build-docker-image:
     needs: build-and-test
