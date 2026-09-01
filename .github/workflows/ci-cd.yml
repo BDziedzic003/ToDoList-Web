@@ -42,4 +42,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t todolist-api:${{ github.sha }} -f ToDoList.Api/Dockerfile .
+        run: docker build -t todolist-api:${{ github.sha }} -f Dockerfile .
