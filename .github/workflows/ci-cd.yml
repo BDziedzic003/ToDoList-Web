@@ -17,7 +17,7 @@ jobs:
       - name: .NET SDK Install
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.0'
+          dotnet-version: '10.0.x'
 
       - name: Dependencies restore
         run: dotnet restore ToDoList.sln
