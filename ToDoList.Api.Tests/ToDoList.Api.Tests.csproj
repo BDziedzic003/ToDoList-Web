@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ToDoList.Api\ToDoList.Api.csproj" />
-    <ProjectReference Include="..\ToDoList.core\ToDoList.Core.csproj" />
+    <ProjectReference Include="..\ToDoList.Core\ToDoList.Core.csproj" />
   </ItemGroup>
 
 </Project>
