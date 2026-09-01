@@ -27,6 +27,10 @@ jobs:
 
       - name: Tests
         run: dotnet test ToDoList.Api.slnx --no-build --configuration Release --verbosity normal
+        env:
+          Jwt__Key: "testkeytestkeytestkeytestkeytestkeytestkeytestkey"
+          Jwt__Issuer: "ToDoListApi"
+          Jwt_Audience: "ToDoListApiUsers"
 
   build-docker-image:
     needs: build-and-test
