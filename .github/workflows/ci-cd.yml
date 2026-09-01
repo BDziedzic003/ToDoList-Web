@@ -20,13 +20,13 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Dependencies restore
-        run: dotnet restore ToDoList.slnx
+        run: dotnet restore ToDoList.Api.slnx
 
       - name: Build
-        run: dotnet build ToDoList.slnx --no-restore --configuration Release
+        run: dotnet build ToDoList.Api.slnx --no-restore --configuration Release
 
       - name: Tests
-        run: dotnet test ToDoList.slnx --no-build --configuration Release --verbosity normal
+        run: dotnet test ToDoList.Api.slnx --no-build --configuration Release --verbosity normal
 
   build-docker-image:
     needs: build-and-test
