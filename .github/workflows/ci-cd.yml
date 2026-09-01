@@ -20,7 +20,7 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Dependencies restore
-        run: dotnet restore ToDoList.sln
+        run: dotnet restore ToDoList.slnx
 
       - name: Build
         run: dotnet build ToDoList.slnx --no-restore --configuration Release
