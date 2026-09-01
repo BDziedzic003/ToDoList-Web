@@ -1,0 +1,41 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master-postgresql ]
+  pull_request:
+    branches: [ master-postgresql ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: .NET SDK Install
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.0'
+
+      - name: Dependencies restore
+        run: dotnet restore ToDoList.sln
+
+      - name: Build
+        run: dotnet build ToDoList.sln --no-restore --configuration Release
+
+      - name: Tests
+        run: dotnet test ToDoList.sln --no-build --configuration Release --verbosity normal
+
+  build-docker-image:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/master-postgresql' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t todolist-api:${{ github.sha }} -f ToDoList.Api/Dockerfile .
